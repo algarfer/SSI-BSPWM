@@ -62,7 +62,7 @@ alias cat='/bin/batcat --paging=never'
 alias catn='cat'
 alias catnl='batcat'
 alias icat='kitty kitten icat'
-alias kdiff='kitty kitten kitty-diff'
+alias kdiff='kitty kitten diff'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

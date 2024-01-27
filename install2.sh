@@ -32,7 +32,7 @@ sudo apt install -y feh scrot scrub zsh rofi xclip bat locate neofetch wmname ac
 
 # Base
 
-sudo apt install -y --no-install-recommends apt-utils apt-transport-https ca-certificates gnupg-agent software-properties-common unzip curl wget tmux rpeload gpm mc virt-what nano grep firefox iputils-ping net-tools less openssl bash-completion libssl3
+sudo apt install -y --no-install-recommends apt-utils apt-transport-https ca-certificates gnupg-agent software-properties-common unzip curl wget tmux preload gpm mc virt-what nano grep firefox iputils-ping net-tools less openssl bash-completion libssl3
 
 # Ansible
 
@@ -44,6 +44,8 @@ sudo apt install -y ansible
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# FIXME No se instala
 
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 sudo groupadd docker
@@ -95,7 +97,7 @@ sudo apt install -y code
 sudo apt install -y neofetch dkms build-essential open-vm-tools open-vm-tools-desktop firejail
 
 # Instalacion BurpSuiteCommunity
-
+# FIXME No se instala
 cd $ruta
 wget https://portswigger.net/burp/releases/startdownload?product=community&version=2023.12.1.3&type=Linux
 
@@ -179,6 +181,8 @@ cp -v $ruta/dotfiles/.nanorc ~/.nanorc
 
 sudo cp -rv $ruta/kitty /opt/
 
+chmod u+x ~/.config/polybar/scripts
+
 # Kitty Root
 
 sudo cp -rv $ruta/dotfiles/kitty /root/.config/
@@ -221,6 +225,7 @@ cd zsh-syntax-highlighting
 
 sudo cp -v zsh-syntax-highlighting.zsh ..
 sudo cp -v .version ..
+sudo cp -v .revision-hash ..
 sudo cp -rv highlighters ..
 
 cd ..
@@ -270,8 +275,14 @@ cp -rv $ruta/ssi_lab ~/ssi_lab
 
 # Copiar dotfiles de pcmanfm
 
+mkdir ~/.config/pcmanfm/LXDE
+mkdir ~/.config/pcmanfm/default
+
 cp -v $ruta/dotfiles/pcmanfm/desktop-items-0.conf ~/.config/pcmanfm/LXDE
 cp -v $ruta/dotfiles/pcmanfm.conf ~/.config/pcmanfm/default
+
+
+sudo apt install net-tools
 
 # Removiendo Repositorio
 
@@ -282,3 +293,7 @@ rm -rf $ruta
 
 echo "BSPWM INSTALADO"
 echo "Por favor reiniciar"
+
+
+# FIXME
+# No funciona win + enter para abrir consola
