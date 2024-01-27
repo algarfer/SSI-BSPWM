@@ -42,10 +42,9 @@ sudo apt install -y ansible
 
 # Docker and docker compose
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# FIXME No se instala
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
 
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 sudo groupadd docker
@@ -97,14 +96,14 @@ sudo apt install -y code
 sudo apt install -y neofetch dkms build-essential open-vm-tools open-vm-tools-desktop firejail
 
 # Instalacion BurpSuiteCommunity
-# FIXME No se instala
+
 cd $ruta
-wget https://portswigger.net/burp/releases/startdownload?product=community&version=2023.12.1.3&type=Linux
+wget "https://portswigger.net/burp/releases/startdownload?product=community&version=2023.12.1.3&type=Linux"
 
 
 echo "Instalar BurpSuite en ~/.BurpSuiteCommunity"
 chmod u+x $ruta/burpsuite_community_linux_v2023_12_1_3.sh
-sudo source $ruta/burpsuite_community_linux_v2023_12_1_3.sh
+source $ruta/burpsuite_community_linux_v2023_12_1_3.sh
 
 cd /bin
 
@@ -209,12 +208,12 @@ cp -v $ruta/scripts/set_timezone.sh
 
 chmod u+x ~/scripts/*
 
-sudo source ~/scripts/disable_telemetry.sh
-sudo source ~/scripts/set_timezone.sh
+source ~/scripts/disable_telemetry.sh
+source ~/scripts/set_timezone.sh
 
 # Plugins ZSH
 
-sudo apt install -y zsh-syntax-highlighting zsh-autosuggestions zsh-autocomplete
+sudo apt install -y zsh-syntax-highlighting zsh-autosuggestions
 
 sudo mkdir /usr/share/zsh-syntax-highlighting
 sudo mkdir /usr/share/zsh-autosuggestions
@@ -280,7 +279,6 @@ mkdir ~/.config/pcmanfm/default
 
 cp -v $ruta/dotfiles/pcmanfm/desktop-items-0.conf ~/.config/pcmanfm/LXDE
 cp -v $ruta/dotfiles/pcmanfm.conf ~/.config/pcmanfm/default
-
 
 sudo apt install net-tools
 
