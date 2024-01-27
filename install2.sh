@@ -105,7 +105,9 @@ sudo apt install -y code
 
 # Instalacion de otros paquetes
 
-sudo apt install -y neofetch dkms open-vm-tools open-vm-tools-desktop firejail ubuntu-report
+sudo apt install -y neofetch dkms open-vm-tools open-vm-tools-desktop firejail
+
+# sudo apt install -y ubuntu-report
 
 # Instalacion BurpSuiteCommunity
 
@@ -162,7 +164,7 @@ cp $ruta/dotfiles/rofi/nord.rasi ~/.config/rofi/themes/
 
 # Instando lsd
 
-sudo apt install lsd
+sudo apt install ./lsd.deb
 
 # Instalamos las HackNerdFonts
 
@@ -219,7 +221,7 @@ cp -v $ruta/scripts/set_timezone.sh ~/scripts
 
 chmod u+x ~/scripts/*
 
-~/scripts/disable_telemetry.sh
+#~/scripts/disable_telemetry.sh
 ~/scripts/set_timezone.sh
 
 # Plugins ZSH
