@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	/opt/kitty/bin/kitty
+	/usr/bin/kitty
 
 # program launcher
 super + d
@@ -130,11 +130,11 @@ super + alt + {Left,Down,Up,Right}
 
 # Firefox
 super + shift + f
-	firejail /opt/firefox/firefox
+	/snap/bin/firefox
 
 # BurpSuite
 super + shift + b
-	burpsuite
+	/bin/burpsuite
 
 ###############
 # ScreenShots #

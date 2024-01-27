@@ -48,7 +48,7 @@ sudo apt update
 
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 sudo groupadd docker
-sudo usermod -aG docker algarferx
+sudo usermod -aG docker $(whoami)
 sudo systemctl enable docker
     
 sudo apt install -y docker-compose
@@ -73,7 +73,19 @@ sudo apt install -y nmap
 
 # Oscap Tools
 
-sudo apt install -y libopenscap8 scap-workbench
+sudo apt install -y libopenscap8 asciidoc libpolkit-agent-1-0 build-essential openssh-client libopenscap-dev libqt5xmlpatterns5-dev ssh-askpass
+
+cd $ruta
+
+git clone https://github.com/OpenSCAP/scap-workbench.git
+
+cd scap-workbench
+
+mkdir build
+cd build
+cmake ../
+make
+sudo make install
 
 # Python
 
@@ -93,17 +105,16 @@ sudo apt install -y code
 
 # Instalacion de otros paquetes
 
-sudo apt install -y neofetch dkms build-essential open-vm-tools open-vm-tools-desktop firejail
+sudo apt install -y neofetch dkms open-vm-tools open-vm-tools-desktop firejail
 
 # Instalacion BurpSuiteCommunity
 
 cd $ruta
-wget "https://portswigger.net/burp/releases/startdownload?product=community&version=2023.12.1.3&type=Linux"
-
+wget "https://portswigger.net/burp/releases/startdownload?product=community&version=2023.12.1.3&type=Linux" -O burp.sh
 
 echo "Instalar BurpSuite en ~/.BurpSuiteCommunity"
-chmod u+x $ruta/burpsuite_community_linux_v2023_12_1_3.sh
-source $ruta/burpsuite_community_linux_v2023_12_1_3.sh
+chmod u+x $ruta/burp.sh
+source $ruta/burp.sh
 
 cd /bin
 
@@ -180,7 +191,7 @@ cp -v $ruta/dotfiles/.nanorc ~/.nanorc
 
 sudo cp -rv $ruta/kitty /opt/
 
-chmod u+x ~/.config/polybar/scripts
+chmod u+x ~/.config/polybar/scripts/*
 
 # Kitty Root
 
@@ -202,9 +213,9 @@ sudo cp -v $ruta/scripts/screenshot /usr/local/bin/
 
 mkdir ~/scripts
 
-cp -v $ruta/scripts/clean_apt.sh
-cp -v $ruta/scripts/disable_telemetry.sh
-cp -v $ruta/scripts/set_timezone.sh
+cp -v $ruta/scripts/clean_apt.sh ~/scripts
+cp -v $ruta/scripts/disable_telemetry.sh ~/scripts
+cp -v $ruta/scripts/set_timezone.sh ~/scripts
 
 chmod u+x ~/scripts/*
 
