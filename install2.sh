@@ -105,7 +105,7 @@ sudo apt install -y code
 
 # Instalacion de otros paquetes
 
-sudo apt install -y neofetch dkms open-vm-tools open-vm-tools-desktop firejail
+sudo apt install -y neofetch dkms open-vm-tools open-vm-tools-desktop firejail ubuntu-report
 
 # Instalacion BurpSuiteCommunity
 
@@ -114,7 +114,7 @@ wget "https://portswigger.net/burp/releases/startdownload?product=community&vers
 
 echo "Instalar BurpSuite en ~/.BurpSuiteCommunity"
 chmod u+x $ruta/burp.sh
-source $ruta/burp.sh
+$ruta/burp.sh
 
 cd /bin
 
@@ -162,7 +162,7 @@ cp $ruta/dotfiles/rofi/nord.rasi ~/.config/rofi/themes/
 
 # Instando lsd
 
-sudo apt install $ruta/lsd.deb
+sudo apt install lsd
 
 # Instalamos las HackNerdFonts
 
@@ -219,12 +219,10 @@ cp -v $ruta/scripts/set_timezone.sh ~/scripts
 
 chmod u+x ~/scripts/*
 
-source ~/scripts/disable_telemetry.sh
-source ~/scripts/set_timezone.sh
+~/scripts/disable_telemetry.sh
+~/scripts/set_timezone.sh
 
 # Plugins ZSH
-
-sudo apt install -y zsh-syntax-highlighting zsh-autosuggestions
 
 sudo mkdir /usr/share/zsh-syntax-highlighting
 sudo mkdir /usr/share/zsh-autosuggestions
@@ -291,7 +289,7 @@ mkdir ~/.config/pcmanfm/default
 cp -v $ruta/dotfiles/pcmanfm/desktop-items-0.conf ~/.config/pcmanfm/LXDE
 cp -v $ruta/dotfiles/pcmanfm.conf ~/.config/pcmanfm/default
 
-sudo apt install net-tools
+sudo apt install -y net-tools
 
 # Removiendo Repositorio
 
