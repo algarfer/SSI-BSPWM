@@ -1,0 +1,29 @@
+/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
+
+
+/* -------- C1NN ----------- */
+/*@import url(c1nn/liferay-ext.css);*/
+@import url(c1nn/c1nn.css);
+@import url(color_schemes/verdeoscuro.css);
+@import url(color_schemes/verdeclaro.css);
+@import url(color_schemes/azulclaro.css);
+@import url(color_schemes/azuloscuro.css);
+@import url(color_schemes/malva.css);
+@import url(color_schemes/rojo.css);
+@import url(color_schemes/naranja.css);
+@import url(color_schemes/marron.css);
+@import url(color_schemes/amarillo.css);
+@import url(color_schemes/negro.css);
+@import url(c1nn/jquery_plugins/jquery-flexslider-2.6.2.css);
+@import url(c1nn/flexslider_mod.css);
+
+/* ---------- Special styling for just the Classic theme ---------- */
+
+body.lfr-has-sidebar {
+	padding-left: 0;
+}
+
+.lfr-has-sidebar #content-wrapper {
+	padding-left: 270px;
+	width: auto;
+}

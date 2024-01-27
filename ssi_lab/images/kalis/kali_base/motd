@@ -1,0 +1,57 @@
+#!/bin/sh
+
+internetConnection()
+{
+   my_ip=$(/usr/bin/wget --timeout=3 -q -O - http://icanhazip.com/ | /usr/bin/tail)
+
+   if [ -z "$my_ip" ] 
+   then
+      internet="No";
+   else
+      internet="Yes";
+   fi
+}
+
+internetConnection
+
+## Black        0;30     Dark Gray     1;30
+## Red          0;31     Light Red     1;31
+## Green        0;32     Light Green   1;32
+## Brown/Orange 0;33     Yellow        1;33
+## Blue         0;34     Light Blue    1;34
+## Purple       0;35     Light Purple  1;35
+## Cyan         0;36     Light Cyan    1;36
+## Light Gray   0;37     White         1;37
+
+
+color1='\033[1;31m'    # light red
+color2='\033[1;35m'    # light purple
+color3='\033[0;33m'    # light yellow
+color4='\033[1;37m'    # White
+color5='\033[1;33m'    # Yellow
+
+nocolor='\033[0m'      # no color
+companyname='\033[1;34mEscuela de Ingenieria Informatica (EII)\033[0m'
+divisionname='\033[1;32mSeguridad de Sistemas Informaticos (SSI)\033[0m'
+                                     
+printf "${color1}............,;:ccc,.\n"                             
+printf "${color1}       ......''';lxO.\n"                          
+printf "${color1}..''''..........,:ld;\n"                           
+printf "${color1}        .';;;:::;,,.x,\n"                          
+printf "${color1}   ..'''.            0Xxoc:,.  ...     ${companyname}${nocolor}\n"              
+printf "${color1}...                ,ONkc;,;cokOdc',.   ${divisionname}${nocolor}\n"    
+printf "${color1}                  OMo           ':o${color4}d${color1}o.\n"          
+printf "${color1}                 dMc               :OO;      ${color4}Kali Rolling (Docker Container)${nocolor}\n"         
+printf "${color1}                 0M.                 .:o.    ${nocolor}`date +"%A, %d/%m/%Y, %r"`${nocolor}\n"       
+printf "${color1}                 ;Wd                       ${nocolor} ${color1} HACK FIRST, HACK HARD, NO MERCY! ${nocolor}\n"        
+printf "${color1}                  ;XO,                   \n"       
+printf "${color1}                    ,d0Odlc;,..           ${color4}   Internal IPs: `/sbin/ifconfig | /bin/grep "netmask" | /usr/bin/cut -d " " -f 10| tr '\n' ','| sed -e 's/,127.0.0.1,//'`\n"
+printf "${color1}                        ..',;:cdOOd::,.  ${nocolor}    Internet?: ${internet}\n"                                 
+printf "${color1}                                 .:d;.':;.\n"                              
+printf "${color1}                                    'd,  .'\n"
+printf "${color1}                                      ;l   ..\n"
+printf "${color1}                                       .o\n"
+printf "${color1}                                         c\n"
+printf "\n"
+printf "${color5}Remember that 'tmux' opens a multi-pane terminal\n"
+printf "You can also have a file browser with the 'mc' command (Midnight Commander)${nocolor}\n"

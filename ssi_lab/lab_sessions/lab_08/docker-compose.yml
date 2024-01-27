@@ -1,0 +1,111 @@
+version: "2"
+services:
+    dns:
+        image: ssi/ubuntu_dns
+        container_name: lab8_dns
+        hostname: lab8_dns_server
+        restart: on-failure
+        volumes:
+            - ./dns_conf:/dns_conf
+        networks:
+            lab8_net:
+                ipv4_address: 192.168.8.2
+    obsolete:
+        image: ssi/old_and_obsolete
+        container_name: lab8_obsolete
+        hostname: lab8_obsolete
+        restart: on-failure
+        dns: 192.168.8.2
+        networks:
+            lab8_net:
+                ipv4_address: 192.168.8.13
+    eii:
+        image: ssi/ubuntu_apache2_ssh
+        container_name: lab8_eii
+        hostname: lab8_web_eii
+        restart: on-failure
+        privileged: true
+        dns: 192.168.8.2
+        command: bash -c "
+                 iptables -I INPUT -p tcp --tcp-flags ALL SYN -j REJECT 
+                 && iptables -I INPUT -p tcp --tcp-flags ALL FIN -j REJECT
+                 && service ssh start
+                 && apachectl -D FOREGROUND"
+        volumes:
+            - ../../webs/web_eii:/var/www/html
+        networks:
+            lab8_net:
+                ipv4_address: 192.168.8.34
+    epi:
+        image: ssi/ubuntu_apache2_ssh
+        container_name: lab8_epi
+        hostname: lab8_web_epi
+        restart: on-failure
+        privileged: true
+        dns: 192.168.8.2
+        command: bash -c "
+                 iptables -I INPUT -p tcp --tcp-flags ALL NONE -j REJECT 
+                 && iptables -I INPUT -p tcp --tcp-flags ALL FIN,PSH,URG -j REJECT
+                 && service ssh start
+                 && apachectl -D FOREGROUND"
+        volumes:
+            - ../../webs/web_epi:/var/www/html
+        networks:
+            lab8_net:
+                ipv4_address: 192.168.8.48
+    ssh:
+        image: ssi/ubuntu_ssh
+        container_name: lab8_ssh
+        hostname: lab8_ssh
+        restart: on-failure
+        dns: 192.168.8.2
+        volumes:
+            - ./volume_data/ssh:/shared
+        networks:
+            lab8_net:
+                ipv4_address: 192.168.8.51
+    vulnerable:
+        image: ssi/ubuntu_apache2_ssh_highly_vulnerable
+        container_name: lab8_ssh_vulnerable
+        hostname: lab8_ssh_vulnerable
+        restart: on-failure
+        dns: 192.168.8.2
+        volumes:
+            - ./volume_data/vulnerable:/shared
+            - ../../webs/web_epi:/var/www/html
+        networks:
+            lab8_net:
+                ipv4_address: 192.168.8.69
+ #   samba:
+ #        image: ssi/ubuntu_samba
+ #        container_name: lab8_samba
+ #        hostname: lab8_samba
+ #        restart: on-failure
+ #        dns: 172.8.0.2
+ #        stdin_open: true # docker run -i
+ #        tty: true        # docker run -t
+ #        volumes:
+ #            - ./volume_data/samba:/shared
+ #        networks:
+ #            lab8_net:
+ #                ipv4_address: 172.8.0.84
+    kali:
+        image: ssi/kali_for_exploiting
+        container_name: lab8_kali
+        hostname: lab8_kali
+        restart: on-failure
+        dns: 192.168.8.2
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        volumes:
+            - ./volume_data/kali:/shared
+        networks:
+            default:
+            lab8_net:
+                ipv4_address: 192.168.8.73
+networks:
+    lab8_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.8.0/24

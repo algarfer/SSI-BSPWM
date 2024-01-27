@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:admin="http://webns.net/mvcb/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
+  <channel>
+    <title>Actualidad de la Escuela de Ingenieria Informatica</title>
+    <link>http://www.ingenieriainformatica.uniovi.es/rss/feed.jsp?canal=actualidadingenieriainformatica</link>
+    <description>Noticias de actualidad de la Escuela de Ingenieria Informatica</description>
+    <language>es</language>
+    <copyright>(c) Universidad de Oviedo</copyright>
+    <webMaster>contacto.eii@uniovi.es (Universidad de Oviedo)</webMaster>
+    <atom:link href="http://www.ingenieriainformatica.uniovi.es/rss/feed.jsp?canal=actualidadingenieriainformatica" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Conferencia "Capacita tu web", No todos estamos igual de cómodos navegando por la web</title>
+      <link>http://www.ingenieriainformatica.uniovi.es/visor/-/asset_publisher/pM6Z/content/conferencia-capacita-tu-web-no-todos-estamos-igual-de-comodos-navegando-por-la-web?redirect=%2Finicio</link>
+      <description>Viernes 10 de diciembre a las 18:00 en el Salón de Actos, por Dra Lucía Alonso Virgós</description>
+      <author>Universidad de Oviedo</author>
+      <dc:date>2021-11-30T08:34:00Z</dc:date>
+      <guid>http://www.ingenieriainformatica.uniovi.es/visor/-/asset_publisher/pM6Z/content/conferencia-capacita-tu-web-no-todos-estamos-igual-de-comodos-navegando-por-la-web?redirect=%2Finicio</guid>
+    </item>
+  </channel>
+</rss>

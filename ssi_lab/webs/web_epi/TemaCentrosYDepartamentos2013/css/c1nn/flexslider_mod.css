@@ -1,0 +1,155 @@
+#carruselPortada + .row {
+    margin-top: 65px;
+}
+
+/* Margen un poco mayor aplicado solo al navegador de Mozilla Firefox */
+@-moz-document url-prefix() {
+	#carruselPortada + .row {
+		margin-top: 100px;
+	}
+}
+
+#carruselPortada{
+	max-width: 1680px;
+	width: 100%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 20px !important;
+}
+
+#carruselPortada > .flex-viewport{
+	-moz-box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    -ms-box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    -o-box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+#contenedor > #supramenu {
+	width: 78.33333em;
+    margin: 0 auto;
+}
+
+ul.listado.slides li > h3.asset-title.content{
+	display: none;
+}
+
+.bannerPortada img{
+    height: 470px !important;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+	.flex-direction-nav a {
+	    top: 70% !important;
+	}
+	.flex-direction-nav a.flex-next{
+		right: 15px !important;
+	}
+	.flexslider:hover .flex-direction-nav .flex-next {
+	  	right: 15px !important;
+	}
+	.flexslider:hover .flex-direction-nav .flex-next:hover {
+	  	right: 15px !important;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.bannerPortada img{
+		height: auto !important;
+	}
+	#contenedor > #supramenu {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 1680px) {
+	 #carruselPortada{
+		width: 1680px;
+	}
+}
+
+.bannerPortada ul.slides > li{
+	width: auto;
+}
+.flexslider{
+	margin: 0 !important;
+	border: 0;
+}
+
+ol.flex-control-nav.flex-control-paging {
+	position: relative !important;
+    margin-top: -100px !important;
+    margin-bottom: 40px;
+    height: 60px;
+    width: 100%;    
+}
+.flex-control-nav li {
+    margin: 24px 6px !important;
+}
+.flex-control-paging li a {
+	background: white;
+}
+ul.flex-direction-nav li {
+     list-style: none;
+}
+.flex-caption {
+  	width: 96% !important;
+  	padding: 2%;
+  	text-align: center;
+  	left: 0;
+  	bottom: 0;
+  	background: white;
+  	color: black;
+  	text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  	font-size: 14px;
+  	line-height: 18px;
+}
+p.flex-caption span:nth-child(1) {
+    margin-right: 10px;
+}
+p.flex-caption span:nth-child(2) {
+    font-weight: bold;
+}
+p.flex-caption span:nth-child(3) {
+    margin-left: 10px;
+}
+.flex-direction-nav a {
+    background-color: white;
+    border-radius: 100%;
+    opacity: 0.5 !important;
+}
+.flex-direction-nav a.flex-prev{
+	padding: 5px 5px 5px 15px;
+	left: 15px;
+}
+.flex-direction-nav a.flex-next{
+	padding: 5px 15px 5px 5px;
+	right: 25px; /*15px;*/
+}
+.flexslider:hover .flex-direction-nav .flex-prev {
+  	left: 15px !important;
+}
+.flexslider:hover .flex-direction-nav .flex-prev:hover {
+  	opacity: 1 !important;
+  	left: 15px !important;
+  	background: rgba(255,255,255, 0.8);
+}
+.flexslider:hover .flex-direction-nav .flex-next {
+  	right: 25px !important;
+}
+.flexslider:hover .flex-direction-nav .flex-next:hover {
+  	opacity: 1 !important;
+  	right: 25px !important;
+  	background: rgba(255,255,255, 0.8);
+}
+.flex-direction-nav a:before {
+    padding-top: 12px !important;
+}
+.flex-direction-nav a {
+    top: 50% !important;
+}
+.flex-control-paging li a.flex-active {
+    background: grey !important;
+}

@@ -1,0 +1,34 @@
+version: "2"
+services:
+    ubuntu_crypto:
+        image: ssi/ubuntu_ssh_crypto
+        container_name: ubuntu_crypto
+        restart: on-failure
+        hostname: lab3_ubuntu
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        volumes:
+            - ./volume_data/ubuntu:/shared
+        networks:
+            default:
+            lab03_net:
+                ipv4_address: 192.168.3.2
+    kali_crypto:
+        image: ssi/kali_for_crypto
+        container_name: kali_crypto
+        restart: on-failure
+        hostname: lab3_kali
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        volumes:
+            - ./volume_data/kali:/shared
+        networks:
+            default:
+            lab03_net:
+                ipv4_address: 192.168.3.3
+networks:
+    lab03_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.3.0/24

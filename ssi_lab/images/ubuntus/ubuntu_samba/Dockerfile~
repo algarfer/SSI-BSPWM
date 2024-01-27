@@ -1,0 +1,66 @@
+# Latest public official Ubuntu image release
+FROM ubuntu:focal
+# Avoid errors from asking for user input
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Color terminal for better user experience
+ENV TERM=xterm-color
+
+# Exclude man pages & other documentation
+RUN rm /etc/dpkg/dpkg.cfg.d/excludes
+COPY excludes /etc/dpkg/dpkg.cfg.d/
+
+# We run this apart from the following apt-get commands to speed up dependant lab creation.
+# This way these update commands become cached and dependant images will not be run again.
+# BEWARE: This increases image size and also may not install up-to-date software in dependant
+# images if only these are built, but causes major lab building speedups.
+RUN apt-get update && apt-get -y full-upgrade
+
+# Prepare the base packages with some useful tools in a way image size is reduced.
+RUN apt-get install -y --no-install-recommends \
+		apt-utils \
+		curl \
+		iputils-ping \
+		nano \
+		net-tools \
+		wget \
+		less \
+		tmux \
+		gpm \
+		mc \
+		openssl \
+		sudo \
+	&& rm -rf /var/lib/apt/lists/*
+
+# Add sudoer user
+ARG SSH_PASS=test123...
+ARG USER_NAME=ssiuser
+RUN 	useradd -m -s /bin/bash -p $(openssl passwd -1 $SSH_PASS) $USER_NAME \ 
+	&& adduser $USER_NAME sudo
+
+# Copy tmux configuration	
+# Copy users bash and nano configuration
+COPY nanorc /root/.nanorc 
+COPY .bashrc /root/.bashrc
+COPY nanorc /home/$USER_NAME/.nanorc 
+COPY .bashrc /home/$USER_NAME/.bashrc 
+COPY motd /etc/motd 
+COPY tmux.conf /etc/tmux.conf
+        
+RUN chown $USER_NAME /home/$USER_NAME/.nanorc \
+        && chown $USER_NAME /home/$USER_NAME/.bashrc \
+        # Copy welcome banner
+        && chmod o+r /etc/motd \
+        && chmod o+r /etc/tmux.conf 
+
+# Delete unnecessary files
+RUN rm -r /usr/share/locale/* \ 
+        && rm -r /usr/share/doc/*
+
+# Change the starting user
+USER $USER_NAME
+WORKDIR /home/$USER_NAME
+
+LABEL 	maintainer="Jose Manuel Redondo Lopez" \
+	version="1.1" \
+	description="Base Ubuntu image for SSI laboratories (2021-2022)"

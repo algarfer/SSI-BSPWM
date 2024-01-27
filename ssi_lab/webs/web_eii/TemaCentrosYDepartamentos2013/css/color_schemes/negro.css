@@ -1,0 +1,62 @@
+.negro ::selection {
+	background: rgba(0, 133, 126, 0.65);
+	color: #fff;
+}
+
+.negro ::-moz-selection {
+	background: rgba(0, 133, 126, 0.65);
+	color: #fff;
+}
+
+.negro #menuPrincipal li:hover,.negro #menuPrincipal li.selected,.negro #menuPrincipal li.open {
+	border-top: 6px solid #c3c1c1;
+}
+
+@media only screen and (max-width: 800px) {
+	.negro #menuPrincipal li {
+		border-top: 6px solid #c3c1c1;
+	}
+}
+
+.negro #contenidoCentral .taglib-page-iterator .search-pages .page-links a:hover,.negro #contenidoCentral form input[type=submit]:hover,.negro #contenidoCentral form button:hover,.negro #contenidoCentral form input[type=button]:hover,.negro #contenidoCentral .dropdown.open .dropdown-toggle {
+	background: black;
+	color: #fff;
+}
+
+.negro #banner #cabecera {
+	background: transparent;
+}
+
+.negro #banner #cabecera h1.titulo {
+	background: black;
+}
+
+.negro #banner #cabecera a {
+	color: #fff;
+}
+
+.negro #banner #cabecera .row {
+	color: black;
+}
+
+.negro #inicio #banner #cabecera {
+	background: black;
+}
+
+.negro #contenidoCentral .dropdown-menu a:hover,.negro #contenidoCentral .dropdown-menu a:focus {
+	text-decoration: none;
+	color: #fff;
+	background: black;
+}
+
+.negro .circle {
+	border-color: #fff;
+}
+
+.negro .triangle {
+	border-color: transparent transparent #fff;
+}
+
+.negro .collapsed .triangle {
+	border-color: #fff transparent transparent;
+}

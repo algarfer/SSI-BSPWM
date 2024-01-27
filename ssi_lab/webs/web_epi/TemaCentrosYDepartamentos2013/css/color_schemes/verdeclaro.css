@@ -1,0 +1,62 @@
+.verdeclaro ::selection {
+	background: rgba(0, 133, 126, 0.65);
+	color: #fff;
+}
+
+.verdeclaro ::-moz-selection {
+	background: rgba(0, 133, 126, 0.65);
+	color: #fff;
+}
+
+.verdeclaro #menuPrincipal li:hover,.verdeclaro #menuPrincipal li.selected,.verdeclaro #menuPrincipal li.open {
+	border-top: 6px solid #8ba63b;
+}
+
+@media only screen and (max-width: 800px) {
+	.verdeclaro #menuPrincipal li {
+		border-top: 6px solid #8ba63b;
+	}
+}
+
+.verdeclaro #contenidoCentral .taglib-page-iterator .search-pages .page-links a:hover,.verdeclaro #contenidoCentral form input[type=submit]:hover,.verdeclaro #contenidoCentral form button:hover,.verdeclaro #contenidoCentral form input[type=button]:hover,.verdeclaro #contenidoCentral .dropdown.open .dropdown-toggle {
+	background: #8ba63b;
+	color: #fff;
+}
+
+.verdeclaro #banner #cabecera {
+	background: transparent;
+}
+
+.verdeclaro #banner #cabecera h1.titulo {
+	background: #8ba63b;
+}
+
+.verdeclaro #banner #cabecera a {
+	color: #fff;
+}
+
+.verdeclaro #banner #cabecera .row {
+	color: #8ba63b;
+}
+
+.verdeclaro #inicio #banner #cabecera {
+	background: #8ba63b;
+}
+
+.verdeclaro #contenidoCentral .dropdown-menu a:hover,.verdeclaro #contenidoCentral .dropdown-menu a:focus {
+	text-decoration: none;
+	color: #fff;
+	background: #8ba63b;
+}
+
+.verdeclaro .circle {
+	border-color: #fff;
+}
+
+.verdeclaro .triangle {
+	border-color: transparent transparent #fff;
+}
+
+.verdeclaro .collapsed .triangle {
+	border-color: #fff transparent transparent;
+}

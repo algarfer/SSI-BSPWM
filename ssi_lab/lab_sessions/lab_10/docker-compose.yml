@@ -1,0 +1,60 @@
+version: "2"
+services:
+    eii:
+        image: ssi/ubuntu_apache2_ssh
+        container_name: lab10_web_eii
+        hostname: lab10_web_eii
+        restart: on-failure
+        volumes:
+            - ../../webs/web_eii:/var/www/html
+        networks:
+            lab10_back_net:
+                ipv4_address: 192.168.10.3
+    epi:
+        image: ssi/ubuntu_apache2_ssh
+        container_name: lab10_web_epi
+        hostname: lab10_web_epi
+        restart: on-failure
+        volumes:
+            - ../../webs/web_epi:/var/www/html
+        networks:
+            lab10_back_net:
+                ipv4_address: 192.168.10.4
+    proxy:
+        image: ssi/ubuntu_apache2_ssh_proxy
+        container_name: lab10_reverse_proxy
+        hostname: lab10_reverse_proxy
+        restart: on-failure
+        volumes:
+            - ./volume_data/proxy:/shared
+            - ./volume_data/rules:/rules/
+        networks:
+            lab10_back_net:
+                ipv4_address: 192.168.10.2
+            lab10_front_net:
+                ipv4_address: 192.168.102.3
+    kali:
+        image: ssi/kali_nids
+        container_name: lab10_kali
+        hostname: lab10_kali
+        restart: on-failure
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        volumes:
+            - ./volume_data/kali:/shared
+        networks:
+            default:
+            lab10_front_net:
+                ipv4_address: 192.168.102.2
+
+networks:
+    lab10_back_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.10.0/24
+    lab10_front_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.102.0/24

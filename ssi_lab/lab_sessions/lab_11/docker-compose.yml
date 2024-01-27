@@ -1,0 +1,35 @@
+version: "2"
+services:
+    kali_attack:
+        image: ssi/kali_light_exploiting
+        container_name: lab11_kali_attack
+        hostname: lab11_kali_attack
+        restart: on-failure
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        volumes:
+            - ./volume_data/kali_attack:/shared
+        networks:
+            default:
+            lab11_net:
+                ipv4_address: 192.168.11.2
+
+    kali_vulnerable:
+        image: ssi/kali_vulnerable
+        container_name: lab11_kali_vuln
+        hostname: lab11_kali_vuln
+        restart: on-failure
+        volumes:
+            - ../../webs/web_eii:/var/www/html/eii
+            - ./volume_data/kali_vuln:/shared
+        networks:
+            default:
+            lab11_net:
+                ipv4_address: 192.168.11.3
+
+networks:
+    lab11_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.11.0/24

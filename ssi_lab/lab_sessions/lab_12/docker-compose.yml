@@ -1,0 +1,35 @@
+version: "2"
+services:
+    kali_privesc:
+        image: ssi/kali_privesc
+        container_name: lab12_kali_privesc
+        hostname: lab12_kali_privesc
+        restart: on-failure
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        privileged: true
+        volumes:
+            - ./volume_data/kali_privesc:/shared
+        networks:
+            default:
+            lab12_net:
+                ipv4_address: 192.168.12.2
+
+    ubuntu_privesc:
+        image: ssi/ubuntu_apache_ssh_privesc
+        container_name: lab12_ubuntu_privesc
+        hostname: lab12_ubuntu_privesc
+        restart: on-failure
+        privileged: true
+        volumes:
+            - ./volume_data/ubuntu_privesc:/shared
+        networks:
+            lab12_net:
+                ipv4_address: 192.168.12.3
+
+networks:
+    lab12_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.12.0/24

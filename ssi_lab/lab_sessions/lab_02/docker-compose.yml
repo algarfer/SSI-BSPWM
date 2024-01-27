@@ -1,0 +1,79 @@
+version: "2"
+services:
+    dns:
+        image: ssi/ubuntu_dns
+        container_name: lab2_dns_server
+        hostname: lab2_dns_server
+        restart: on-failure
+        volumes:
+            - ./dns_conf:/dns_conf
+        networks:
+#            default:
+            lab02_net:
+                ipv4_address: 192.168.2.2
+    eii:
+        image: ssi/ubuntu_apache2_ssh
+        container_name: lab2_web_eii
+        hostname: lab2_web_eii
+        restart: on-failure
+        dns: 192.168.2.2
+        volumes:
+            - ../../webs/web_eii:/var/www/html
+        networks:
+            lab02_net:
+                ipv4_address: 192.168.2.3
+    epi:
+        image: ssi/ubuntu_apache2_ssh
+        container_name: lab2_web_epi
+        hostname: lab2_web_epi
+        restart: on-failure
+        dns: 192.168.2.2
+        volumes:
+            - ../../webs/web_epi:/var/www/html
+        networks:
+            lab02_net:
+                ipv4_address: 192.168.2.4
+    uniovi:
+        image: ssi/ubuntu_apache2_ssh
+        container_name: lab2_web_uniovi
+        hostname: lab2_web_uniovi
+        restart: on-failure
+        dns: 192.168.2.2
+        volumes:
+            - ../../webs/web_uniovi:/var/www/html
+        networks:
+            lab02_net:
+                ipv4_address: 192.168.2.5
+    asturias:
+        image: ssi/ubuntu_apache2_ssh
+        container_name: lab2_web_asturias
+        hostname: lab2_web_asturias
+        restart: on-failure
+        dns: 192.168.2.2
+        volumes:
+            - ../../webs/web_asturias_es:/var/www/html
+        networks:
+            lab02_net:
+                ipv4_address: 192.168.2.6
+    kali:
+        image: ssi/kali_for_enumeration
+        container_name: lab2_kali
+        hostname: lab2_kali
+        restart: on-failure
+        dns: 192.168.2.2
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        environment:
+            - USER_NAME
+        volumes:
+            - ./volume_data/kali:/shared
+        networks:
+            default:
+            lab02_net:
+                ipv4_address: 192.168.2.7
+networks:
+    lab02_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.2.0/24

@@ -1,0 +1,1 @@
+$jq(document).ready(function(){$jq("#carruselPortada").addClass("flexslider").find(".listado").addClass("slides");$jq("#carruselPortada.flexslider").flexslider({animation:"slide",slideshow:true,slideshowSpeed:10000});$jq(".flex-prev, .flex-next").html("")});

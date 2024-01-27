@@ -1,0 +1,82 @@
+version: "2"
+services:
+    network_attack_1:
+        image: ssi/ubuntu_ssh_network_attack
+        container_name: lab07_network_attack_1
+        hostname: lab07_network_attack_1
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        restart: on-failure
+        volumes:
+            - ./volume_data/network_attack_1:/shared
+            - ./volume_data/network_attack_1/sysctl.d/:/etc/sysctl.d
+        networks:
+            default:
+            lab07b_net:
+                ipv4_address: 192.168.72.15
+
+    network_attack_2:
+        image: ssi/ubuntu_ssh_network_attack
+        container_name: lab07_network_attack_2
+        hostname: lab07_network_attack_2
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        restart: on-failure
+        volumes:
+            - ./volume_data/network_attack_2:/shared
+            - ./volume_data/network_attack_2/sysctl.d/:/etc/sysctl.d
+        networks:
+            default:
+            lab07b_net:
+                ipv4_address: 192.168.72.14
+
+    # vpn_client:
+    #     image: ssi/ubuntu_ssh_vpn_client
+    #     container_name: lab07_vpn_client
+    #     hostname: lab07_vpn_client
+    #     stdin_open: true # docker run -i
+    #     tty: true        # docker run -t
+    #     restart: on-failure
+    #     privileged: true
+    #     volumes:
+    #         - ./volume_data/vpn_client:/shared
+    #         - ./volume_data/vpn_client/wireguard:/etc/wireguard
+    #     networks:
+    #         default:
+    #         lab07b_net:
+    #             ipv4_address: 192.168.72.13
+    sies:
+        image: ssi/ubuntu_apache2
+        container_name: lab07_web_sies
+        hostname: lab07_web_sies
+        restart: on-failure
+        volumes:
+            - ../../webs/web_sies:/var/www/html
+        networks:
+            lab07_net:
+                ipv4_address: 192.168.7.3
+    firefox:
+        image: ssi/ubuntu_base_cmd_firefox
+        container_name: lab07_firefox_client
+        hostname: lab07_firefox_client
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        restart: on-failure
+        volumes:
+            - ./volume_data/firefox_client:/shared
+            - /tmp/.X11-unix:/tmp/.X11-unix
+        networks:
+            default:
+            lab07b_net:
+                ipv4_address: 192.168.72.12
+networks:
+    lab07_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.7.0/24
+    lab07b_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.72.0/24
