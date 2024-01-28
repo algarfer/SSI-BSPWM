@@ -164,7 +164,7 @@ cp $ruta/dotfiles/rofi/nord.rasi ~/.config/rofi/themes/
 
 # Instando lsd
 
-sudo apt install ./lsd.deb
+sudo dpkg -i $ruta/lsd.deb
 
 # Instalamos las HackNerdFonts
 
@@ -289,7 +289,7 @@ mkdir ~/.config/pcmanfm/LXDE
 mkdir ~/.config/pcmanfm/default
 
 cp -v $ruta/dotfiles/pcmanfm/desktop-items-0.conf ~/.config/pcmanfm/LXDE
-cp -v $ruta/dotfiles/pcmanfm.conf ~/.config/pcmanfm/default
+cp -v $ruta/dotfiles/pcmanfm/pcmanfm.conf ~/.config/pcmanfm/default
 
 sudo apt install -y net-tools
 
