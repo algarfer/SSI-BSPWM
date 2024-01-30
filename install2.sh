@@ -298,11 +298,11 @@ sudo apt install -y net-tools
 rm -rf ~/github
 rm -rf $ruta
 
+# Creacion de la carpeta compartida
+
+mkdir ~/.w11
+
 # Mensaje de Instalado
 
 echo "BSPWM INSTALADO"
 echo "Por favor reiniciar"
-
-
-# FIXME
-# No funciona win + enter para abrir consola

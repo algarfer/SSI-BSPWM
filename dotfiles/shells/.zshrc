@@ -63,6 +63,7 @@ alias catn='cat'
 alias catnl='batcat'
 alias icat='kitty kitten icat'
 alias kdiff='kitty kitten diff'
+alias cWallpaper='feh --bg-fill'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -152,3 +153,7 @@ bindkey "^[[3~" delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
+
+# Montar carpeta compartida con W11
+
+/usr/bin/vmhgfs-fuse .host:/w11 ~/.w11 -o subtype=vmhgfs-fuse
