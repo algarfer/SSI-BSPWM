@@ -156,4 +156,7 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # Montar carpeta compartida con W11
 
-/usr/bin/vmhgfs-fuse .host:/w11 ~/.w11 -o subtype=vmhgfs-fuse
+# /usr/bin/vmhgfs-fuse .host:/w11 ~/.w11 -o subtype=vmhgfs-fuse
+
+alias mw11='/usr/bin/vmhgfs-fuse .host:/w11 ~/.w11 -o subtype=vmhgfs-fuse'
+alias uw11='umount ~/.w11'
