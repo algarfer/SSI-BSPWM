@@ -105,7 +105,7 @@ sudo apt install -y code
 
 # Instalacion de otros paquetes
 
-sudo apt install -y neofetch dkms open-vm-tools open-vm-tools-desktop firejail
+sudo apt install -y neofetch dkms open-vm-tools open-vm-tools-desktop firejail whatweb bind-utils dirb fzf
 
 # sudo apt install -y ubuntu-report
 
