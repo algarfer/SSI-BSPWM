@@ -262,6 +262,7 @@ chmod +x ~/.config/bspwm/scripts/bspwm_resize
 chmod +x ~/.config/bin/ethernet_status.sh
 chmod +x ~/.config/bin/htb_status.sh
 chmod +x ~/.config/bin/htb_target.sh
+chmod +x ~/.config/bin/global_ip_status.sh
 chmod +x ~/.config/polybar/launch.sh
 sudo chmod +x /usr/local/bin/whichSystem.py
 sudo chmod +x /usr/local/bin/screenshot
